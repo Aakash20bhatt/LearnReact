@@ -20,7 +20,7 @@ function App() {
   return (
     <>
       <AdvanceForm/>
-      <hr />
+      <br />
       <Form/>
       {/* <Header/>
       <Button/>

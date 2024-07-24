@@ -4,7 +4,6 @@ import UserProfile from './Components/UserProfile';
 import Button from './Components/Button';
 import Counter from './Components/Counter'
 import Form from './Components/Form'
-import AdvanceForm from './Components/AdvanceForm';
 
 // const users = [
 //   {name:"John",age:"15",location:"India"},
@@ -19,8 +18,6 @@ function App() {
 
   return (
     <>
-      <AdvanceForm/>
-      <hr />
       <Form/>
       {/* <Header/>
       <Button/>

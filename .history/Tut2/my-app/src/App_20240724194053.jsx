@@ -4,23 +4,20 @@ import UserProfile from './Components/UserProfile';
 import Button from './Components/Button';
 import Counter from './Components/Counter'
 import Form from './Components/Form'
-import AdvanceForm from './Components/AdvanceForm';
 
-// const users = [
-//   {name:"John",age:"15",location:"India"},
-//   {name:"Anderson",age:"42",location:"England"},
-//   {name:"Sky",age:"30",location:"India"},
-//   {name:"Bumrah",age:"31",location:"Mumbai"},
-//   {name:"Rohit",age:"30",location:"India"},
-//   {name:"DK",age:"30",location:"India"},
-// ]
+const users = [
+  {name:"John",age:"15",location:"India"},
+  {name:"Anderson",age:"42",location:"England"},
+  {name:"Sky",age:"30",location:"India"},
+  {name:"Bumrah",age:"31",location:"Mumbai"},
+  {name:"Rohit",age:"30",location:"India"},
+  {name:"DK",age:"30",location:"India"},
+]
 
 function App() {
 
   return (
     <>
-      <AdvanceForm/>
-      <hr />
       <Form/>
       {/* <Header/>
       <Button/>
@@ -33,4 +30,4 @@ function App() {
 }
 
 export default App;
-// export const a = 10; // name export
+export const a = 10;
