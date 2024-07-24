@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+
+    <!-- React  -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <!-- React-DOM -->
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel JS -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+
+    <div id="root">
+
+    </div>
+
+    <script type="text/babel">
+
+        // hello world with react
+        // <div>
+        //     <h1>heading 1</h1>
+        //     <h2>heading 2</h2>
+        //     </div>
+
+        // JSX is not supported by browser
+
+        const rootElement = document.querySelector("#root")
+        // Hello world using Vanilla Js
+        // const h1Element = document.createElement("h1")
+        // console.log(h1Element)
+        // h1Element.innerText = "Hello World"
+        // const bodyElement = document.querySelector("body")
+        // bodyElement.appendChild(h1Element)
+
+
+        // Functional Component
+        function App(){
+            return (
+                <h1>Hello World</h1>
+            )
+        }
+        
+        ReactDOM.render(<App/>,rootElement)
+
+        // Hello World using React
+
+        // const h1Element = React.createElement('h1',{id:'heading'},"Hello World")
+        // const h2Element = React.createElement('h2',{className:'two'},"I am heading 2");
+        // const divElement = React.createElement('div',{className:"parent-div"},[h1Element,h2Element]);
+
+        // ReactDOM.render(divElement,rootElement)
+        // console.log(h1Element) 
+    </script>
+</body>
+</html>
