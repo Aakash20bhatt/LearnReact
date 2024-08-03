@@ -387,10 +387,10 @@ export default function Watchlist(){
                                         alt="poster" />
                                         {movie.title}
                                 </td>
-                                <td className="p-4">{movie.vote_average}</td>
-                                <td className="p-4">{movie.popularity}</td>
-                                <td className="p-4">{movie.genre_ids[0]}</td>
-                                <td className="text-rose-600 cursor-pointer p-4">
+                                <td className="p-2">{movie.vote_average}</td>
+                                <td className="p-2">{movie.popularity}</td>
+                                <td className="p-2">{movie.genre_ids[0]}</td>
+                                <td className="text-rose-600 cursor-pointer p-2">
                                     <i className="fa-solid fa-trash"></i>
                                 </td>
                             </tr>

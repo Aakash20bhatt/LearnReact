@@ -1,4 +1,4 @@
-import { BASE_URL } from "../utils/common";
+import { BASE_URL } from "../utils/constants";
 
 
 let movies = [
@@ -362,7 +362,7 @@ export default function Watchlist(){
             <table className="rounded-xl border w-[90%] overflow-hidden">
                 <thead className="bg-slate-300 h-12 rounded-lg">
                     <tr className="border-b-2 text-left">
-                        <th className="p-2">Name</th>
+                        <th>Name</th>
                         <th>
                             <i className="fa-solid fa-angle-up mr-2"></i>
                             Ratings
@@ -387,10 +387,10 @@ export default function Watchlist(){
                                         alt="poster" />
                                         {movie.title}
                                 </td>
-                                <td className="p-4">{movie.vote_average}</td>
-                                <td className="p-4">{movie.popularity}</td>
-                                <td className="p-4">{movie.genre_ids[0]}</td>
-                                <td className="text-rose-600 cursor-pointer p-4">
+                                <td>{movie.vote_average}</td>
+                                <td>{movie.popularity}</td>
+                                <td>{movie.genre_ids[0]}</td>
+                                <td className="text-rose-600 cursor-pointer">
                                     <i className="fa-solid fa-trash"></i>
                                 </td>
                             </tr>

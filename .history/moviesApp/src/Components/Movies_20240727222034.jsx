@@ -31,7 +31,7 @@ export default function Movies(){
     }
 
     const removeFromWatchList = (movieId)=>{
-        const filteredWatchList = watchList.filter((id) => id !== movieId);
+        const filteredWatchList = watchList.filter(item=> !item.id!==movieId);
         setWatchList(filteredWatchList);
     }
 

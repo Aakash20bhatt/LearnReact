@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import {BASE_URL} from '../utils/common'
 
+const BASE_URL = "https://image.tmdb.org/t/p/original/"
 
 export default function Banner(){
     const [title, setTitle] = useState("");

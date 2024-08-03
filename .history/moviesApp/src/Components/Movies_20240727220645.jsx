@@ -8,12 +8,8 @@ export default function Movies(){
     const [movies, setMovies] = useState(null);
     const [pageNo,setPageNo] = useState(1);
     const [watchList,setWatchList] = useState(
-        JSON.parse(localStorage.getItem('watchList'))||[]
-    );
 
-    useEffect(()=>{
-        localStorage.setItem('watchList',JSON.stringify(watchList));
-    },[watchList])
+    );
 
     const handlePrev=(e)=>{
         if(pageNo>1){
@@ -25,14 +21,12 @@ export default function Movies(){
         setPageNo(pageNo+1)
     }
 
-    const addToWatchList = (movieId)=>{
-        const newWatchList = [...watchList,movieId]
-        setWatchList(newWatchList);
+    const addWatchList = ()=>{
+
     }
 
-    const removeFromWatchList = (movieId)=>{
-        const filteredWatchList = watchList.filter((id) => id !== movieId);
-        setWatchList(filteredWatchList);
+    const removeWatchList = ()=>{
+
     }
 
     useEffect(()=>{
@@ -57,8 +51,8 @@ export default function Movies(){
                         title={movie.title} 
                         id={movie.id}
                         fav={watchList.includes(movie.id)}
-                        addToWatchList = {addToWatchList}
-                        removeFromWatchList = {removeFromWatchList}
+                        addWatchList = {addWatchList}
+                        removeWatchList = {removeWatchList}
                         poster={BASE_URL+movie.backdrop_path}/>
                     })
                 }

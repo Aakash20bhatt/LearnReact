@@ -5,15 +5,8 @@ import MovieCard from './MovieCard';
 import Pagination from './Pagination';
 
 export default function Movies(){
-    const [movies, setMovies] = useState(null);
+    const [movies, setMovies] = useState(null)   
     const [pageNo,setPageNo] = useState(1);
-    const [watchList,setWatchList] = useState(
-        JSON.parse(localStorage.getItem('watchList'))||[]
-    );
-
-    useEffect(()=>{
-        localStorage.setItem('watchList',JSON.stringify(watchList));
-    },[watchList])
 
     const handlePrev=(e)=>{
         if(pageNo>1){
@@ -23,16 +16,6 @@ export default function Movies(){
 
     const handleNext=(e)=>{
         setPageNo(pageNo+1)
-    }
-
-    const addToWatchList = (movieId)=>{
-        const newWatchList = [...watchList,movieId]
-        setWatchList(newWatchList);
-    }
-
-    const removeFromWatchList = (movieId)=>{
-        const filteredWatchList = watchList.filter((id) => id !== movieId);
-        setWatchList(filteredWatchList);
     }
 
     useEffect(()=>{
@@ -52,14 +35,7 @@ export default function Movies(){
             <div className="flex flex-wrap justify-evenly">
                 {
                     movies.map((movie)=>{
-                        return <MovieCard 
-                        key={movie.id} 
-                        title={movie.title} 
-                        id={movie.id}
-                        fav={watchList.includes(movie.id)}
-                        addToWatchList = {addToWatchList}
-                        removeFromWatchList = {removeFromWatchList}
-                        poster={BASE_URL+movie.backdrop_path}/>
+                        return <MovieCard key={movie.id} title={movie.title} poster={BASE_URL+movie.backdrop_path}/>
                     })
                 }
             </div>

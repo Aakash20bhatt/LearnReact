@@ -30,8 +30,8 @@ export default function Movies(){
         setWatchList(newWatchList);
     }
 
-    const removeFromWatchList = (movieId)=>{
-        const filteredWatchList = watchList.filter((id) => id !== movieId);
+    const removeWatchList = (movieId)=>{
+        const filteredWatchList = watchList.filter(item=> !item.id!==movieId);
         setWatchList(filteredWatchList);
     }
 
@@ -58,7 +58,7 @@ export default function Movies(){
                         id={movie.id}
                         fav={watchList.includes(movie.id)}
                         addToWatchList = {addToWatchList}
-                        removeFromWatchList = {removeFromWatchList}
+                        removeWatchList = {removeWatchList}
                         poster={BASE_URL+movie.backdrop_path}/>
                     })
                 }

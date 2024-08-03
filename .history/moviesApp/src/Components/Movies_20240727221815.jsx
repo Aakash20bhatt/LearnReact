@@ -14,7 +14,7 @@ export default function Movies(){
     useEffect(()=>{
         localStorage.setItem('watchList',JSON.stringify(watchList));
     },[watchList])
-
+    
     const handlePrev=(e)=>{
         if(pageNo>1){
             setPageNo(pageNo-1);
@@ -25,13 +25,13 @@ export default function Movies(){
         setPageNo(pageNo+1)
     }
 
-    const addToWatchList = (movieId)=>{
+    const addWatchList = (movieId)=>{
         const newWatchList = [...watchList,movieId]
         setWatchList(newWatchList);
     }
 
-    const removeFromWatchList = (movieId)=>{
-        const filteredWatchList = watchList.filter((id) => id !== movieId);
+    const removeWatchList = (movieId)=>{
+        const filteredWatchList = watchList.filter(item=> !item.id!==movieId);
         setWatchList(filteredWatchList);
     }
 
@@ -57,8 +57,8 @@ export default function Movies(){
                         title={movie.title} 
                         id={movie.id}
                         fav={watchList.includes(movie.id)}
-                        addToWatchList = {addToWatchList}
-                        removeFromWatchList = {removeFromWatchList}
+                        addWatchList = {addWatchList}
+                        removeWatchList = {removeWatchList}
                         poster={BASE_URL+movie.backdrop_path}/>
                     })
                 }

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import {BASE_URL} from '../utils/common'
+import {BASE_URL} from '../utils/common.js'
 
 
 export default function Banner(){
