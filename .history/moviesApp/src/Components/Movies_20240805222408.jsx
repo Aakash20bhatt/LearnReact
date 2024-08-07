@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import Pagination from './Pagination';
 
-export default function Movies({watchList,addToWatchList,removeFromWatchList}){
+export default function Movies(watchList,addToWatchList,removeFromWatchList){
     const [movies, setMovies] = useState([]);
     const [pageNo,setPageNo] = useState(1);
 

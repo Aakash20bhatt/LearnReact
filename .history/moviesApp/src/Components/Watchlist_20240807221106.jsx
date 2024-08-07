@@ -1,30 +1,15 @@
-import { useEffect, useState } from "react";
-import { GENRES_ID_MAPPING, ALL_GENRES, BASE_URL } from "../utils/common";
+import { BASE_URL } from "../utils/common";
+import { GENRES_ID_MAPPING } from "../utils/common";
 
 export default function Watchlist({movies,removeFromWatchList}){
-    const [genres,setGenres] = useState([ALL_GENRES]);
-    const [selectedGenre,setSelectedGenre] = useState(ALL_GENRES)
-
-    useEffect(()=>{
-        const genreList = movies.map((movieObj)=>{
-            return GENRES_ID_MAPPING[movieObj.genre_ids[0]];
-        });
-        const uniqueGenreList = new Set(genreList);
-        setGenres([ALL_GENRES,...uniqueGenreList])
-    },[movies])
+    let genres = ["All Genres", "Comedy", "Comedy", "Drama","Adventure"];
 
     return(
         <div className="flex flex-col items-center justify-center">
             <div className="flex w-[90%] my-8 justify-evenly">
                 {
                     genres.map((genre,index)=>{
-                        return <div 
-                        key={index} 
-                        onClick={()=>setSelectedGenre(genre)}
-                        className={`cursor-pointer text-2xl rounded-2xl text-white h-[3rem] 
-                        w-[12rem] bg-slate-400 flex items-center justify-center
-                        ${genre===selectedGenre?'bg-blue-400':''}
-                        `}>
+                        return <div key={index} className="cursor-pointer text-2xl rounded-2xl text-white h-[3rem] w-[12rem] bg-slate-400 flex items-center justify-center">
                             {genre}
                         </div>
                     })
@@ -50,10 +35,7 @@ export default function Watchlist({movies,removeFromWatchList}){
                     </tr>
                 </thead>
                 <tbody>
-                    {movies.filter((movieObj)=>{
-                        if(selectedGenre===ALL_GENRES) return true;
-                        return selectedGenre === GENRES_ID_MAPPING[movieObj.genre_ids[0]]
-                    }).map((movie)=>{
+                    {movies.map((movie)=>{
                         return (
                             <tr key={movie.id} className="border-2	hover:bg-slate-100"> 
                                 <td className="flex m-4 gap-8 items-center">

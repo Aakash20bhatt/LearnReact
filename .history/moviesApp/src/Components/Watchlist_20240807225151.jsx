@@ -51,7 +51,6 @@ export default function Watchlist({movies,removeFromWatchList}){
                 </thead>
                 <tbody>
                     {movies.filter((movieObj)=>{
-                        if(selectedGenre===ALL_GENRES) return true;
                         return selectedGenre === GENRES_ID_MAPPING[movieObj.genre_ids[0]]
                     }).map((movie)=>{
                         return (

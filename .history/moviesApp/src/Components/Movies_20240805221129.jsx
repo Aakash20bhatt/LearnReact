@@ -4,9 +4,12 @@ import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import Pagination from './Pagination';
 
-export default function Movies({watchList,addToWatchList,removeFromWatchList}){
+export default function Movies(){
     const [movies, setMovies] = useState([]);
     const [pageNo,setPageNo] = useState(1);
+    const [watchList,setWatchList] = useState(
+        JSON.parse(localStorage.getItem('watchList'))||[]
+    );
 
     useEffect(()=>{
         localStorage.setItem('watchList',JSON.stringify(watchList));
@@ -20,6 +23,16 @@ export default function Movies({watchList,addToWatchList,removeFromWatchList}){
 
     const handleNext=(e)=>{
         setPageNo(pageNo+1)
+    }
+
+    const addToWatchList = (movieToAdd)=>{
+        const newWatchList = [...watchList,movieToAdd]
+        setWatchList(newWatchList);
+    }
+
+    const removeFromWatchList = (movieToRemove)=>{
+        const filteredWatchList = watchList.filter((movieObj) => movieObj.id !== movieToRemove.id);
+        setWatchList(filteredWatchList);
     }
 
     useEffect(()=>{

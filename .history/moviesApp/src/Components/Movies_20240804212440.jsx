@@ -4,9 +4,12 @@ import { useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import Pagination from './Pagination';
 
-export default function Movies({watchList,addToWatchList,removeFromWatchList}){
-    const [movies, setMovies] = useState([]);
+export default function Movies(){
+    const [movies, setMovies] = useState(null);
     const [pageNo,setPageNo] = useState(1);
+    const [watchList,setWatchList] = useState(
+        JSON.parse(localStorage.getItem('watchList'))||[]
+    );
 
     useEffect(()=>{
         localStorage.setItem('watchList',JSON.stringify(watchList));
@@ -20,6 +23,16 @@ export default function Movies({watchList,addToWatchList,removeFromWatchList}){
 
     const handleNext=(e)=>{
         setPageNo(pageNo+1)
+    }
+
+    const addToWatchList = (movieId)=>{
+        const newWatchList = [...watchList,movieId]
+        setWatchList(newWatchList);
+    }
+
+    const removeFromWatchList = (movieId)=>{
+        const filteredWatchList = watchList.filter((id) => id !== movieId);
+        setWatchList(filteredWatchList);
     }
 
     useEffect(()=>{
@@ -40,10 +53,10 @@ export default function Movies({watchList,addToWatchList,removeFromWatchList}){
                 {
                     movies.map((movie)=>{
                         return <MovieCard 
-                        key={movie.id}
+                        key={movie.id} 
                         title={movie.title} 
-                        movie={movie}
-                        fav={watchList.some((movieObj) => movieObj.id === movie.id)}
+                        id={movie.id}
+                        fav={watchList.includes(movie.id)}
                         addToWatchList = {addToWatchList}
                         removeFromWatchList = {removeFromWatchList}
                         poster={BASE_URL+movie.backdrop_path}/>

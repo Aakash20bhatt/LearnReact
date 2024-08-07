@@ -21,5 +21,3 @@ export const GENRES_ID_MAPPING = {
     10752: "War",
     37: "Western",
 }
-
-export const ALL_GENRES = "All Genres";

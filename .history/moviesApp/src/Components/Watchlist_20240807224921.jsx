@@ -20,7 +20,7 @@ export default function Watchlist({movies,removeFromWatchList}){
                     genres.map((genre,index)=>{
                         return <div 
                         key={index} 
-                        onClick={()=>setSelectedGenre(genre)}
+                        onClick={()=>selectedGenre(genre)}
                         className={`cursor-pointer text-2xl rounded-2xl text-white h-[3rem] 
                         w-[12rem] bg-slate-400 flex items-center justify-center
                         ${genre===selectedGenre?'bg-blue-400':''}
@@ -50,10 +50,7 @@ export default function Watchlist({movies,removeFromWatchList}){
                     </tr>
                 </thead>
                 <tbody>
-                    {movies.filter((movieObj)=>{
-                        if(selectedGenre===ALL_GENRES) return true;
-                        return selectedGenre === GENRES_ID_MAPPING[movieObj.genre_ids[0]]
-                    }).map((movie)=>{
+                    {movies.map((movie)=>{
                         return (
                             <tr key={movie.id} className="border-2	hover:bg-slate-100"> 
                                 <td className="flex m-4 gap-8 items-center">

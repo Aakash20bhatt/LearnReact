@@ -39,11 +39,7 @@ function App() {
         }></Route>
 
         <Route path='/watchlist' element={
-          <Watchlist
-          movies={watchList}
-          addToWatchList={addToWatchList}
-          removeFromWatchList={removeFromWatchList}          
-          />
+          <Watchlist/>
         }></Route>
       </Routes>
     </BrowserRouter>
