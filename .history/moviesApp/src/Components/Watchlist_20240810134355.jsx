@@ -28,9 +28,15 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
         setWatchList(sortedMovies)
     }
 
+    const searchValue = (value)=>{
+        setTimeout(()=>{
+            setSearchValue(value)
+        },1000)
+    }
+
     return(
         <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-wrap gap w-[90%] my-8 justify-evenly">
+            <div className="flex w-[90%] my-8 justify-evenly">
                 {
                     genres.map((genre,index)=>{
                         return <div 
@@ -48,7 +54,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
             <input value={search}
             placeholder="Search..." 
             className="h-[4rem] p-4 w-[24rem] my-8 text-2xl bg-slate-200 outline-none" 
-            onChange={(e)=>setSearchValue(e.target.value)}/>
+            onChange={(e)=>searchValue(e.target.value)}/>
             <table className="rounded-xl border w-[90%] overflow-hidden">
                 <thead className="bg-slate-300 h-12 rounded-lg">
                     <tr className="border-b-2 text-left">

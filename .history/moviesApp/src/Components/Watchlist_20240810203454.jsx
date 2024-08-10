@@ -30,7 +30,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
 
     return(
         <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-wrap gap w-[90%] my-8 justify-evenly">
+            <div className="flex flex-wrap gap-4 w-[90%] my-8 justify-evenly">
                 {
                     genres.map((genre,index)=>{
                         return <div 

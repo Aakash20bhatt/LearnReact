@@ -30,7 +30,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
 
     return(
         <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-wrap gap w-[90%] my-8 justify-evenly">
+            <div className="flex w-[90%] my-8 justify-evenly">
                 {
                     genres.map((genre,index)=>{
                         return <div 
@@ -54,14 +54,14 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
                     <tr className="border-b-2 text-left">
                         <th className="p-2">Name</th>
                         <th>
-                            <i onClick={()=>sortAscending('vote_average')}  className="cursor-pointer fa-solid fa-angle-up mr-2"></i>
+                            <i onClick={()=>sortAscending('vote_average')} className="fa-solid fa-angle-up mr-2"></i>
                             Ratings
-                            <i onClick={()=>sortDescending('vote_average')} className="cursor-pointer fa-solid fa-angle-down mr-2"></i>
+                            <i onClick={()=>sortDescending('vote_average')} className="fa-solid fa-angle-down mr-2"></i>
                         </th>
                         <th>
-                            <i onClick={()=>sortAscending('popularity')}  className="cursor-pointer fa-solid fa-angle-up mr-2"></i>
+                            <i onClick={()=>sortAscending('popularity')} className="fa-solid fa-angle-up mr-2"></i>
                             Popularity
-                            <i onClick={()=>sortDescending('popularity')} className="cursor-pointer fa-solid fa-angle-down ml-2"></i>
+                            <i onClick={()=>sortDescending('popularity')} className="fa-solid fa-angle-down ml-2"></i>
                         </th>
                         <th>Genre</th>
                         <th></th>

@@ -14,23 +14,23 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
         setGenres([ALL_GENRES,...uniqueGenreList])
     },[movies])
 
-    const sortAscending = (key)=>{
+    const sortAscending = ()=>{
         const sortedMovies = [...movies].sort((movieA, movieB)=>{
-            return movieA[key]-movieB[key];
+            return movieA.vote_average-movieB.vote_average;
         })
         setWatchList(sortedMovies);
     }
 
-    const sortDescending = (key)=>{
+    const sortDescending = ()=>{
         const sortedMovies = [...movies].sort((movieA, movieB)=>{
-            return movieB[key]-movieA[key];
+            return movieB.vote_average-movieA.vote_average;
         })
         setWatchList(sortedMovies)
     }
 
     return(
         <div className="flex flex-col items-center justify-center">
-            <div className="flex flex-wrap gap w-[90%] my-8 justify-evenly">
+            <div className="flex w-[90%] my-8 justify-evenly">
                 {
                     genres.map((genre,index)=>{
                         return <div 
@@ -54,14 +54,14 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
                     <tr className="border-b-2 text-left">
                         <th className="p-2">Name</th>
                         <th>
-                            <i onClick={()=>sortAscending('vote_average')}  className="cursor-pointer fa-solid fa-angle-up mr-2"></i>
+                            <i onClick={sortAscending} className="fa-solid fa-angle-up mr-2"></i>
                             Ratings
-                            <i onClick={()=>sortDescending('vote_average')} className="cursor-pointer fa-solid fa-angle-down mr-2"></i>
+                            <i onClick={sortDescending} className="fa-solid fa-angle-down mr-2"></i>
                         </th>
                         <th>
-                            <i onClick={()=>sortAscending('popularity')}  className="cursor-pointer fa-solid fa-angle-up mr-2"></i>
+                            <i className="fa-solid fa-angle-up mr-2"></i>
                             Popularity
-                            <i onClick={()=>sortDescending('popularity')} className="cursor-pointer fa-solid fa-angle-down ml-2"></i>
+                            <i className="fa-solid fa-angle-down ml-2"></i>
                         </th>
                         <th>Genre</th>
                         <th></th>
