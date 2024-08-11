@@ -5,7 +5,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
     const [genres,setGenres] = useState([ALL_GENRES]);
     const [selectedGenre,setSelectedGenre] = useState(ALL_GENRES)
     const [search, setSearchValue] = useState('');
-    const [debouncedSearch, setDebounceSearch] = useState('');
+    const [debounceSearch, setDebounceSearch] = useState('')
 
     useEffect(()=>{
         const genreList = movies.map((movieObj)=>{
@@ -16,7 +16,6 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
     },[movies])
 
     useEffect(()=>{
-        console.log(search)
         const handler = setTimeout(()=>{
             setDebounceSearch(search);
         },500)
@@ -50,7 +49,6 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
                         onClick={()=>setSelectedGenre(genre)}
                         className={`cursor-pointer text-2xl rounded-2xl text-white h-[3rem] 
                         w-[12rem] bg-slate-400 flex items-center justify-center
-                        mb-4
                         ${genre===selectedGenre?'bg-blue-400':''}
                         `}>
                             {genre}
@@ -85,7 +83,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
                         if(selectedGenre===ALL_GENRES) return true;
                         return selectedGenre === GENRES_ID_MAPPING[movieObj.genre_ids[0]]
                     }).filter((movieObj)=>{
-                        return movieObj.title.toLowerCase().includes(debouncedSearch.toLowerCase().toLowerCase())
+                        return movieObj.title.toLowerCase().includes(search.toLowerCase())
                     })
                     .map((movie)=>{
                         return (

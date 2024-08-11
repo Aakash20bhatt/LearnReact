@@ -5,7 +5,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
     const [genres,setGenres] = useState([ALL_GENRES]);
     const [selectedGenre,setSelectedGenre] = useState(ALL_GENRES)
     const [search, setSearchValue] = useState('');
-    const [debouncedSearch, setDebounceSearch] = useState('');
+    const [debounceSearch, setDebounceSearch] = useState('')
 
     useEffect(()=>{
         const genreList = movies.map((movieObj)=>{

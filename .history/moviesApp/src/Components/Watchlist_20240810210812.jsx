@@ -5,7 +5,11 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
     const [genres,setGenres] = useState([ALL_GENRES]);
     const [selectedGenre,setSelectedGenre] = useState(ALL_GENRES)
     const [search, setSearchValue] = useState('');
-    const [debouncedSearch, setDebounceSearch] = useState('');
+    const [debouncedSearch, setDebounceSearch] = useState('')
+    const itemHeight = 220;
+    const height = 1100;
+    const [indices, setIndices] = useState([0,Math.floor(height/itemHeight)]);
+    const visibleList = movies.slice(indices[0], indices[1]+1);
 
     useEffect(()=>{
         const genreList = movies.map((movieObj)=>{
@@ -62,7 +66,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
             placeholder="Search..." 
             className="h-[4rem] p-4 w-[24rem] my-8 text-2xl bg-slate-200 outline-none" 
             onChange={(e)=>setSearchValue(e.target.value)}/>
-            <table className="rounded-xl border w-[90%] overflow-hidden">
+            <table className="rounded-xl border w-[90%] overflow-hidden" style={{overflow:"auto"}}>
                 <thead className="bg-slate-300 h-12 rounded-lg">
                     <tr className="border-b-2 text-left">
                         <th className="p-2">Name</th>
@@ -80,8 +84,8 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    {movies.filter((movieObj)=>{
+                <tbody style={{height:movies.length*itemHeight}}>
+                    {visibleList.filter((movieObj)=>{
                         if(selectedGenre===ALL_GENRES) return true;
                         return selectedGenre === GENRES_ID_MAPPING[movieObj.genre_ids[0]]
                     }).filter((movieObj)=>{
@@ -89,7 +93,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
                     })
                     .map((movie)=>{
                         return (
-                            <tr key={movie.id} className="border-2	hover:bg-slate-100"> 
+                            <tr key={movie.id} className="border-2	hover:bg-slate-100" style={{height:itemHeight}}> 
                                 <td className="flex m-4 gap-8 items-center">
                                     <img className="h-32 w-36 rounded-lg"
                                         src={BASE_URL + movie.backdrop_path}

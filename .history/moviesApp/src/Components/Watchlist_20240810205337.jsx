@@ -5,7 +5,10 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
     const [genres,setGenres] = useState([ALL_GENRES]);
     const [selectedGenre,setSelectedGenre] = useState(ALL_GENRES)
     const [search, setSearchValue] = useState('');
-    const [debouncedSearch, setDebounceSearch] = useState('');
+    const [debouncedSearch, setDebounceSearch] = useState('')
+    const itemHeight = 220;
+    const height = 1200;
+    const [indices, setIndices] = useState([0,Math.floor(height/itemHeight)]);
 
     useEffect(()=>{
         const genreList = movies.map((movieObj)=>{

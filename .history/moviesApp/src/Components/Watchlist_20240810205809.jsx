@@ -5,7 +5,11 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
     const [genres,setGenres] = useState([ALL_GENRES]);
     const [selectedGenre,setSelectedGenre] = useState(ALL_GENRES)
     const [search, setSearchValue] = useState('');
-    const [debouncedSearch, setDebounceSearch] = useState('');
+    const [debouncedSearch, setDebounceSearch] = useState('')
+    const itemHeight = 220;
+    const height = 1100;
+    const [indices, setIndices] = useState([0,Math.floor(height/itemHeight)]);
+    const visibleList = movies.slice(indices[0], indices[1]+1);
 
     useEffect(()=>{
         const genreList = movies.map((movieObj)=>{
@@ -81,7 +85,7 @@ export default function Watchlist({movies,removeFromWatchList,setWatchList}){
                     </tr>
                 </thead>
                 <tbody>
-                    {movies.filter((movieObj)=>{
+                    {visibleList.filter((movieObj)=>{
                         if(selectedGenre===ALL_GENRES) return true;
                         return selectedGenre === GENRES_ID_MAPPING[movieObj.genre_ids[0]]
                     }).filter((movieObj)=>{
