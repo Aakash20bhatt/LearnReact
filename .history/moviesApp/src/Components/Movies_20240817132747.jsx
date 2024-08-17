@@ -4,17 +4,26 @@ import { useContext, useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import Pagination from './Pagination';
 import MovieContext from '../Contexts/MovieContext';
-import PaginationContext from '../Contexts/PaginationContext'
 
 export default function Movies(){
     const [movies, setMovies] = useState([]);
-    const  {watchList} = useContext(MovieContext);
-    const {pageNo} = useContext(PaginationContext)
+    const [pageNo,setPageNo] = useState(1);
+
+    const  {watchList} = useContext(MovieContext)
 
     useEffect(()=>{
         localStorage.setItem('watchList',JSON.stringify(watchList));
     },[watchList])
 
+    const handlePrev=(e)=>{
+        if(pageNo>1){
+            setPageNo(pageNo-1);
+        }
+    }
+
+    const handleNext=(e)=>{
+        setPageNo(pageNo+1)
+    }
 
     useEffect(()=>{
         axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=2634e9f079c604567d18059d526b4346&page=${pageNo}`).
@@ -42,7 +51,7 @@ export default function Movies(){
                     })
                 }
             </div>
-            <Pagination/>
+            <Pagination pageNo={pageNo}  handleNext={handleNext} handlePrev={handlePrev}/>
         </>
     )
 }

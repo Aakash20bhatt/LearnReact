@@ -5,9 +5,10 @@ import Watchlist from './Components/Watchlist'
 import Navbar from './Components/Navbar'
 import Banner from './Components/Banner'
 import Movies from './Components/Movies'
+import Pagination from './Components/Pagination'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MovieContext from './Contexts/MovieContext'
-import PaginationContext from './Contexts/PaginationContext'
+import PaginationContext from '../Contexts/PaginationContext'
 
 function App() {
   const [watchList,setWatchList] = useState(

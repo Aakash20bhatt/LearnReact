@@ -9,7 +9,7 @@ import PaginationContext from '../Contexts/PaginationContext'
 export default function Movies(){
     const [movies, setMovies] = useState([]);
     const  {watchList} = useContext(MovieContext);
-    const {pageNo} = useContext(PaginationContext)
+    const {pageNo,handleNext,handlePrev} = useContext(PaginationContext)
 
     useEffect(()=>{
         localStorage.setItem('watchList',JSON.stringify(watchList));
@@ -42,7 +42,7 @@ export default function Movies(){
                     })
                 }
             </div>
-            <Pagination/>
+            <Pagination pageNo={pageNo}  handleNext={handleNext} handlePrev={handlePrev}/>
         </>
     )
 }
