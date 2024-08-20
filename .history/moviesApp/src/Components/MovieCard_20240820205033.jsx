@@ -7,9 +7,9 @@ export default function MovieCard({movie,fav, title, poster}){
     return(
             <div className="hover:scale-105 duration-300 cursor-pointer relative m-4 rounded-[1rem] overflow-hidden">
                 <Link to={`${movie.title.replace(/[:\s]+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '')}/${movie.id}`}>
-                    <div className="h-[40vh] w-[200px] bg-center bg-cover rounded-xl hover:scale-110 duration-300 hover:cursor-pointer flex flex-col justify-end items-end"
-                    style={{backgroundImage: `url(${poster})`}}>
-                        <div className="text-white text-center w-full p-2 bg-gray-900/70"> {title}</div>
+                    <div>
+                        <img src={poster} alt="" className="h-[20rem] w-[12rem] object-cover" />
+                        <div className="absolute left-[50%] bottom-2 translate-x-[-50%] text-white text-center w-full p-2 bg-gray-900/70"> {title}</div>
                     </div>
                 </Link>
                 <div className="absolute top-2 right-2 h-8 w-8 bg-black flex items-center justify-center rounded-lg">
