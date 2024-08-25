@@ -1,21 +1,28 @@
 import { BASE_URL } from '../utils/common';
-import { useContext, useEffect } from 'react';
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import Pagination from './Pagination';
 import MovieContext from '../Contexts/MovieContext';
-import { useDispatch, useSelector } from 'react-redux';
-import movieMiddleware from '../redux/movieMiddleware';
+import { useSelector } from 'react-redux';
 // import PaginationContext from '../Contexts/PaginationContext'
 
 export default function Movies(){
     // const [movies, setMovies] = useState([]);
     const { watchList } = useContext(MovieContext);
     const { pageNo } = useSelector((store)=>store.paginationState)
-    const { movies, loading, error } = useSelector((store) => store.moviesState);
-    const dispatch = useDispatch();
-    
+    const { movies, loading, error } = useSelector((store)=>store.movieState)
+
     useEffect(()=>{
-        dispatch(movieMiddleware(pageNo));
+        localStorage.setItem('watchList',JSON.stringify(watchList));
+    },[watchList])
+
+
+    useEffect(()=>{
+        // axios.get(`https://api.themoviedb.org/3/trending/movie/day?api_key=2634e9f079c604567d18059d526b4346&page=${pageNo}`).
+        // then((res)=>{
+        //     setMovies(res.data.results);
+        // });
     },[pageNo])
 
     if(loading){

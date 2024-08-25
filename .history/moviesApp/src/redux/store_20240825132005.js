@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import paginationSlice from "./paginationSlice";
-import movieSlice from "./movieSlice";
+import movieSlice from "./Movie/movieSlice";
 
 
 const store = configureStore({

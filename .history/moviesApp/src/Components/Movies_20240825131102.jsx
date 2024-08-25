@@ -11,10 +11,15 @@ export default function Movies(){
     // const [movies, setMovies] = useState([]);
     const { watchList } = useContext(MovieContext);
     const { pageNo } = useSelector((store)=>store.paginationState)
-    const { movies, loading, error } = useSelector((store) => store.moviesState);
-    const dispatch = useDispatch();
-    
+    const { movies, loading, error } = useSelector((store)=>store.movieState)
+
     useEffect(()=>{
+        localStorage.setItem('watchList',JSON.stringify(watchList));
+    },[watchList])
+
+
+    useEffect(()=>{
+        const dispatch = useDispatch();
         dispatch(movieMiddleware(pageNo));
     },[pageNo])
 

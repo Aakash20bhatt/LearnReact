@@ -1,5 +1,6 @@
 import { BASE_URL } from '../utils/common';
-import { useContext, useEffect } from 'react';
+import axios from 'axios';
+import { useContext, useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import Pagination from './Pagination';
 import MovieContext from '../Contexts/MovieContext';
@@ -11,10 +12,15 @@ export default function Movies(){
     // const [movies, setMovies] = useState([]);
     const { watchList } = useContext(MovieContext);
     const { pageNo } = useSelector((store)=>store.paginationState)
-    const { movies, loading, error } = useSelector((store) => store.moviesState);
-    const dispatch = useDispatch();
-    
+    const { movies, loading, error } = useSelector((store)=>store.movieState)
+
     useEffect(()=>{
+        localStorage.setItem('watchList',JSON.stringify(watchList));
+    },[watchList])
+
+
+    useEffect(()=>{
+        const dispatch = useDispatch();
         dispatch(movieMiddleware(pageNo));
     },[pageNo])
 
