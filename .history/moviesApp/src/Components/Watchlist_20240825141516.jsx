@@ -97,7 +97,7 @@ export default function Watchlist() {
             />
             <table className="rounded-xl border w-[90%] overflow-hidden">
                 <thead className="heading flex bg-slate-300 h-12 rounded-lg pr-2">
-                    <th className="heading-row flex items-center justify-around w-full border-b-2 text-left">
+                    <th className="heading-row flex items-center justify-between w-full border-b-2 text-left">
                         <tr className="column w-1/3	 p-2">Name</tr>
                         <tr className="column w-1/6 ">
                             <i onClick={() => sortAscending('vote_average')} className="cursor-pointer fa-solid fa-angle-up mr-2"></i>

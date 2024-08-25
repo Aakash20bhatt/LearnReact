@@ -54,8 +54,8 @@ export default function Watchlist() {
     const Row = ({ index, style }) => {
         const movie = filteredMovies[index];
         return (
-            <tr key={movie.id} style={style} className="flex items-center justify-between border-2 hover:bg-slate-100">
-                <td className="flex w-1/3 m-4 gap-8 items-center">
+            <tr key={movie.id} style={style} className="border-2 hover:bg-slate-100">
+                <td className="flex m-4 gap-8 items-center">
                     <div onClick={() => navigate(`/${movie.title.replace(/[:\s]+/g, '-').replace(/[^a-zA-Z0-9-_]/g, '')}/${movie.id}`)}>
                         <img className="h-32 w-36 rounded-lg cursor-pointer"
                             src={BASE_URL + movie.backdrop_path}
@@ -63,9 +63,9 @@ export default function Watchlist() {
                     </div>
                     {movie.title}
                 </td>
-                <td className="w-1/6 p-4">{movie.vote_average}</td>
-                <td className="w-1/6 p-4">{movie.popularity}</td>
-                <td className="w-1/6 p-4">{GENRES_ID_MAPPING[movie.genre_ids[0]]}</td>
+                <td className="p-4">{movie.vote_average}</td>
+                <td className="p-4">{movie.popularity}</td>
+                <td className="p-4">{GENRES_ID_MAPPING[movie.genre_ids[0]]}</td>
                 <td onClick={() => removeFromWatchList(movie)} className="text-rose-600 cursor-pointer p-4">
                     <i className="fa-solid fa-trash"></i>
                 </td>
@@ -95,25 +95,25 @@ export default function Watchlist() {
                 className="h-[4rem] p-4 w-[24rem] my-8 text-2xl bg-slate-200 outline-none" 
                 onChange={(e) => setSearchValue(e.target.value)}
             />
-            <table className="rounded-xl border w-[90%] overflow-hidden">
-                <thead className="heading flex bg-slate-300 h-12 rounded-lg pr-2">
-                    <th className="heading-row flex items-center justify-around w-full border-b-2 text-left">
-                        <tr className="column w-1/3	 p-2">Name</tr>
-                        <tr className="column w-1/6 ">
+            <div className="rounded-xl border w-[90%] overflow-hidden">
+                <div className="heading flex bg-slate-300 h-12 rounded-lg">
+                    <div className="heading-row flex items-center justify-between w-full border-b-2 text-left">
+                        <div className="column p-2">Name</div>
+                        <div className="column">
                             <i onClick={() => sortAscending('vote_average')} className="cursor-pointer fa-solid fa-angle-up mr-2"></i>
                             Ratings
                             <i onClick={() => sortDescending('vote_average')} className="cursor-pointer fa-solid fa-angle-down mr-2"></i>
-                        </tr>
-                        <tr className="column w-1/6">
+                        </div>
+                        <div className="column">
                             <i onClick={() => sortAscending('popularity')} className="cursor-pointer fa-solid fa-angle-up mr-2"></i>
                             Popularity
                             <i onClick={() => sortDescending('popularity')} className="cursor-pointer fa-solid fa-angle-down ml-2"></i>
-                        </tr>
-                        <tr className="column w-1/6">Genre</tr>
-                        <tr className="column"></tr>
-                    </th>
-                </thead>
-                <tbody className="tbody">
+                        </div>
+                        <div className="column">Genre</div>
+                        <div className="column"></div>
+                    </div>
+                </div>
+                <div className="tbody">
                     <FixedSizeList
                         height={600} // adjust height as needed
                         itemCount={filteredMovies.length}
@@ -122,8 +122,8 @@ export default function Watchlist() {
                     >
                         {({ index, style }) => <Row index={index} style={style} />}
                     </FixedSizeList>
-                </tbody>
-            </table>
+                </div>
+            </div>
         </div>
     );
 }

@@ -96,20 +96,20 @@ export default function Watchlist() {
                 onChange={(e) => setSearchValue(e.target.value)}
             />
             <table className="rounded-xl border w-[90%] overflow-hidden">
-                <thead className="heading flex bg-slate-300 h-12 rounded-lg pr-2">
-                    <th className="heading-row flex items-center justify-around w-full border-b-2 text-left">
+                <thead className="heading flex bg-slate-300 h-12 rounded-lg mr-2">
+                    <th className="heading-row flex items-center justify-between w-full border-b-2 text-left">
                         <tr className="column w-1/3	 p-2">Name</tr>
                         <tr className="column w-1/6 ">
                             <i onClick={() => sortAscending('vote_average')} className="cursor-pointer fa-solid fa-angle-up mr-2"></i>
                             Ratings
                             <i onClick={() => sortDescending('vote_average')} className="cursor-pointer fa-solid fa-angle-down mr-2"></i>
                         </tr>
-                        <tr className="column w-1/6">
+                        <tr className="column w-1/6 text-center">
                             <i onClick={() => sortAscending('popularity')} className="cursor-pointer fa-solid fa-angle-up mr-2"></i>
                             Popularity
                             <i onClick={() => sortDescending('popularity')} className="cursor-pointer fa-solid fa-angle-down ml-2"></i>
                         </tr>
-                        <tr className="column w-1/6">Genre</tr>
+                        <tr className="column w-1/6 text-center">Genre</tr>
                         <tr className="column"></tr>
                     </th>
                 </thead>
