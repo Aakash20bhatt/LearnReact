@@ -74,7 +74,7 @@ export default function Watchlist() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center mb-8">
+        <div className="flex flex-col items-center justify-center">
             <div className="flex flex-wrap gap w-[90%] my-8 justify-evenly">
                 {genres.map((genre, index) => (
                     <div 

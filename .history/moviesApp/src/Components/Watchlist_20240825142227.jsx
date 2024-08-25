@@ -113,7 +113,7 @@ export default function Watchlist() {
                         <tr className="column"></tr>
                     </th>
                 </thead>
-                <tbody className="tbody border border-solid border-slate-300">
+                <tbody className="tbody border-b border-solid border-slate-300">
                     <FixedSizeList
                         height={600} // adjust height as needed
                         itemCount={filteredMovies.length}

@@ -74,7 +74,7 @@ export default function Watchlist() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center mb-8">
+        <div className="flex flex-col items-center justify-center">
             <div className="flex flex-wrap gap w-[90%] my-8 justify-evenly">
                 {genres.map((genre, index) => (
                     <div 
@@ -113,7 +113,7 @@ export default function Watchlist() {
                         <tr className="column"></tr>
                     </th>
                 </thead>
-                <tbody className="tbody border border-solid border-slate-300">
+                <tbody className="tbody border border-solid bg-slate-300">
                     <FixedSizeList
                         height={600} // adjust height as needed
                         itemCount={filteredMovies.length}
