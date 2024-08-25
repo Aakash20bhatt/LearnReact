@@ -4,7 +4,6 @@ import { useContext, useEffect, useState } from 'react';
 import MovieCard from './MovieCard';
 import Pagination from './Pagination';
 import MovieContext from '../Contexts/MovieContext';
-import { useSelector } from 'react-redux';
 // import PaginationContext from '../Contexts/PaginationContext'
 
 export default function Movies(){
