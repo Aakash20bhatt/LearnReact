@@ -3,7 +3,6 @@
 // import { Suspense, lazy } from 'react';
 import './App.css';
 import LargeArraySum from './Components/LargeArraySum';
-import Todo from './Components/Todo';
 
 // const HomePage = lazy(()=>(import('./Components/HomePage')));
 // const ContactPage = lazy(()=>(import('./Components/ContactPage')))
@@ -22,10 +21,7 @@ function LazyApp(){
         //         </Routes>
         //     </Suspense>
         // </BrowserRouter>
-        <>
-            {/* <LargeArraySum/> */}
-            <Todo/>
-        </>
+        <LargeArraySum/>
     )
 
 }

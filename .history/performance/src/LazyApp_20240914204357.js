@@ -23,7 +23,7 @@ function LazyApp(){
         //     </Suspense>
         // </BrowserRouter>
         <>
-            {/* <LargeArraySum/> */}
+            <LargeArraySum/>
             <Todo/>
         </>
     )
